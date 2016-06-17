@@ -15,7 +15,7 @@ public class FMCW {
     protected double max_fre = 20000;
     protected double min_fre = 17000;
 
-    protected int initAudioTrack(){
+    private int initAudioTrack(){
         int mBufferSize = AudioTrack.getMinBufferSize(SampleRate,
                 AudioFormat.CHANNEL_OUT_MONO,
                 AudioFormat.ENCODING_PCM_16BIT);
@@ -25,11 +25,11 @@ public class FMCW {
                 return 1;
     }
     protected void play(){
+        initAudioTrack();
         final double[] mSound = new double[1024*286];
         final short[] mBuffer = new short[1024*286];
         mAudioTrack.setStereoVolume(AudioTrack.getMaxVolume(), AudioTrack.getMaxVolume());
         mAudioTrack.play();
-
         Thread gen = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -37,7 +37,7 @@ public class FMCW {
                    double frequency = min_fre;
                    double point = Math.floor(chirp_duration/(max_fre-min_fre)*SampleRate);
                 while (mAudioTrack.getPlayState() == AudioTrack.PLAYSTATE_PLAYING) {
-                   frequency = frequency + mSound.length*0.001;
+                  frequency = frequency + mSound.length*0.001;
                     for (int i = 0; i < mSound.length; i++) {
                         count ++;
                         if(count == 1) {
