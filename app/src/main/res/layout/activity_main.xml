@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="Play"
         android:id="@+id/play_button"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -25,4 +25,22 @@
         android:id="@+id/stop_button"
         android:layout_alignTop="@+id/play_button"
         android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/activity_vertical_margin"
+        android:id="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/play_button" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/play_button"></LinearLayout>
+
 </RelativeLayout>

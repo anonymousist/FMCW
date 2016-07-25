@@ -35,7 +35,7 @@ private String outputFile = null;
         int bufferSize = AudioRecord.getMinBufferSize(sampleRate,    //sampling rate
                 AudioFormat.CHANNEL_IN_MONO,   //channel configuration
                 AudioFormat.ENCODING_PCM_16BIT);         //audio encoding
-                Log.e(TAG,"buffersize:"+bufferSize);
+               // Log.e(TAG,"buffersize:"+bufferSize);
         myAudioRecorder = new AudioRecord(MediaRecorder.AudioSource.MIC,  //audio source
                 sampleRate,              //sample rate
                 AudioFormat.CHANNEL_IN_MONO,   //channel
@@ -90,16 +90,15 @@ private String outputFile = null;
                 buffer = new short[blockSize];
                 lastFrame = new double[8192];
                 curlastFrame = new double[8192];
-                Log.e(TAG, "blockSize:" + blockSize + "");
+                //Log.e(TAG, "blockSize:" + blockSize + "");
                 myAudioRecorder.startRecording();   //start recording
                 toTransfrom = new double[blockSize];
                 for (int i =0;i<8192;i++){
                     lastFrame[i] = 0;
                 }
-
                 while (IsRecording == true){
                     int bufferReadResult = myAudioRecorder.read(buffer,0,blockSize);
-                    Log.e(TAG, "bufferReadResult:"+bufferReadResult+"");
+                   // Log.e(TAG, "bufferReadResult:"+bufferReadResult+"");
                     byte bData[] = short2byte(buffer);
                    // Log.e(TAG,"bData:"+(double)bData[300]);
                     for (int i = 0;i<blockSize && i < bufferReadResult;i++){

@@ -11,7 +11,7 @@ import android.util.Log;
 public class FMCW {
 
     AudioTrack mAudioTrack;
-    protected int SampleRate = 48000;
+    protected static final int SampleRate = 48000;
     protected double chirp_duration =0.01075;
     protected double max_fre = 20000;
     protected double min_fre = 19000;
